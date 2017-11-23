@@ -38,8 +38,8 @@ public class Agent {
         }
 
         long currentTime = System.currentTimeMillis();
-        
-        while (DEPTH > currentDepth || currentTime == this.stopTime) {
+
+        while (DEPTH > currentDepth && currentTime > this.stopTime) {
             for (int i = 1; i <= 6; i++) {
 
                 if (currGameState.moveIsPossible(i)) {
