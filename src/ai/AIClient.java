@@ -212,8 +212,8 @@ public class AIClient implements Runnable
      */
     public int getMove(GameState currentBoard)
     {
-        Agent agent = new Agent(currentBoard.getNextPlayer());
-        int myMove = agent.getBestMove(currentBoard, 0);        
+        Agent agent = new Agent(currentBoard.getNextPlayer(), System.currentTimeMillis() + 4000);
+        int myMove = agent.getBestMove(currentBoard, 0, 1);        
         
         //int myMove = getRandom();
         System.out.println("Move is " + myMove);
