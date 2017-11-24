@@ -13,7 +13,7 @@ import kalaha.GameState;
  */
 public class Agent {
 
-    public static int DEPTH = 5;
+    public static int DEPTH = 20;
     private int MIN = 1;
     private int MAX = 2;
     private long stopTime;
@@ -29,19 +29,22 @@ public class Agent {
     }
 
     public int getBestMove(GameState currGameState, int currentDepth, int maxDepth) {
+
+        int bestScoreAtDepth = -1000;
+        int bestMove = -1;
+
         int player = currGameState.getNextPlayer();
 
-        if (currGameState.gameEnded() || currentDepth == maxDepth) {
+        if (currGameState.gameEnded() || currentDepth > maxDepth) {
             return evaluate(currGameState, player);
         }
 
         long currentTime = System.currentTimeMillis();
 
         if ((this.stopTime - currentTime) > 0) {
-            int bestScoreAtDepth = -1000;
-            int bestMove = -1;
 
-            while (maxDepth > currentDepth) {
+            while (maxDepth < DEPTH) {
+                System.out.println("Current depth is " + (currentDepth));
 
                 for (int i = 1; i <= 6; i++) {
 
@@ -65,6 +68,7 @@ public class Agent {
                 }
 
                 this.bestMove = bestMove;
+                maxDepth++;
             }
         }
 
