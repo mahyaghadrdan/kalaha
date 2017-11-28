@@ -74,7 +74,7 @@ public class Agent {
 
         return this.bestMove;
     }
-
+ 
     public int evaluate(GameState currentGameState, int player) {
         return currentGameState.getScore(player == MIN ? MAX : MIN);
     }
